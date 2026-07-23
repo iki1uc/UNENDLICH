@@ -1,55 +1,68 @@
 <!DOCTYPE html>
-<html>
+<html lang="de">
 <head>
 <meta charset="UTF-8">
-<title>UN · Stabilisationsachse</title>
+<title>UNENDLICH · ∞ · Schleifenstation</title>
 
 <style>
 body { background:#000; color:#0f0; font-family:monospace; padding:40px; }
 h1 { color:#6cf; text-align:center; }
+
 #geo {
-    width: 360px; height: 360px;
-    margin: 40px auto;
-    border: 3px solid #6cf;
-    border-radius: 50%;
+    width: 360px;
+    height: 180px;
+    margin: auto;
     position: relative;
     animation: spin 10s linear infinite;
 }
+
 .dot {
-    width: 12px; height: 12px;
-    background:#0f0; border-radius:50%;
+    width: 12px;
+    height: 12px;
+    background:#6cf;
+    border-radius:50%;
     position:absolute;
 }
+
 pre {
-    background:#111; padding:20px; border-left:3px solid #6cf;
+    background:#111;
+    padding:20px;
+    border-left:3px solid #6cf;
 }
-@keyframes spin { from { transform:rotate(0deg); } to { transform:rotate(360deg); } }
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+}
 </style>
 
-<script src="UN.core.js"></script>
-<script src="UN.anker.js"></script>
+<script src="UNENDLICH.core.js"></script>
+<script src="UNENDLICH.loop.js"></script>
+<script src="UNENDLICH.pipeline.js"></script>
 
 </head>
 
 <body>
 
-<h1>UN · Stabilisationsachse</h1>
+<h1>UNENDLICH · ∞ · Schleifenstation</h1>
 
 <div id="geo"></div>
-<pre id="status">Lade UN…</pre>
+<pre id="status">Lade UNENDLICH…</pre>
 
 <script>
 const geo = document.getElementById("geo");
 const count = 81;
-const radius = 160;
+const radiusX = 150;
+const radiusY = 70;
 
 for(let i=0; i<count; i++){
     const dot = document.createElement("div");
     dot.className = "dot";
 
     const angle = (i / count) * Math.PI * 2;
-    const x = Math.cos(angle) * radius + 180 - 6;
-    const y = Math.sin(angle) * radius + 180 - 6;
+
+    const x = Math.cos(angle) * radiusX + 180 - 6;
+    const y = Math.sin(angle) * radiusY + 90 - 6;
 
     dot.style.left = x + "px";
     dot.style.top = y + "px";
@@ -57,12 +70,12 @@ for(let i=0; i<count; i++){
     geo.appendChild(dot);
 }
 
-UN_ANCHOR.set(9);
-UN.set(12, 3);
-const result = UN.compute();
+UNENDLICH.set(12, 7);
+const result = UNENDLICH.compute();
+const fused = UNENDLICH_PIPE.fuse(result);
 
 document.getElementById("status").innerText =
-    JSON.stringify(result, null, 2);
+    JSON.stringify(fused, null, 2);
 </script>
 
 </body>
