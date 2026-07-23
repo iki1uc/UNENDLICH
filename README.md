@@ -1,4 +1,4 @@
-# UNENDLICH · ∞-Achse · Zyklusstation
+# UNENDLICH · ∞-Achse · Schleifenstation
 
 UNENDLICH ist die unendliche Achse des NC-Systems.
 Sie erzeugt Schleifen, Wiederkehr und endlose Zyklen.
